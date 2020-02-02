@@ -1,0 +1,48 @@
+html
+  head
+    title= title
+    style
+      include ../src/style.css
+    link(rel='stylesheet' href='https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css')
+  body
+    nav(class='navbar navbar-expand-md navbar-dark bg-dark')
+      a(class='navbar-brand' href='http://localhost:5000') Camwerkz
+      div(class='collapse navbar-collapse' id='navbarsExampleDefault')
+        ul(class='navbar-nav mr-auto')
+          li(class='nav-item')
+            a(class='nav-link' href='http://localhost:5000/pending-invoices') Pending Invoices to QB
+          li(class='nav-item')
+            a(class='nav-link' href='http://localhost:5000/pending-customers') Pending Customers to QB
+          li(class='nav-item')
+            a(class='nav-link active' href='http://localhost:5000/customers') Customers
+    div(class='container mt-3')
+      div(class='row')
+        div(class='col-lg-12')
+          table(id='example' class='display' style='width:100%')
+            thead
+              tr
+                th Id
+                th Name
+                th Company
+                th Contact
+                th Email
+            tbody
+              each val in customers
+                tr
+                  td
+                    a(href='http://localhost:3000/customers/' + val._id target='_blank')= val._id
+                  td
+                    = val.name
+                  td
+                    = val.company
+                  td
+                    = val.contact
+                  td
+                    = val.email
+    
+    script
+      include ../src/jquery.js
+      include ../src/popper.js
+      include ../src/bootstrap.js
+    script(type='text/javascript' src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js')
+    script(type='text/javascript') $(document).ready( function () {$('#example').DataTable();} );

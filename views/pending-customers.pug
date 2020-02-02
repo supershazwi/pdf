@@ -1,0 +1,37 @@
+html
+  head
+    title= title
+    style
+      include ../src/style.css
+  body
+    nav(class='navbar navbar-expand-md navbar-dark bg-dark')
+      a(class='navbar-brand' href='http://localhost:5000') Camwerkz
+      div(class='collapse navbar-collapse' id='navbarsExampleDefault')
+        ul(class='navbar-nav mr-auto')
+          li(class='nav-item')
+            a(class='nav-link' href='http://localhost:5000/pending-invoices') Pending Invoices to QB
+          li(class='nav-item')
+            a(class='nav-link active' href='http://localhost:5000/pending-customers') Pending Customers to QB
+          li(class='nav-item')
+            a(class='nav-link' href='http://localhost:5000/customers') Customers
+    div(class='container mt-3')
+      div(class='row')
+        div(class='col-lg-12')
+          div(class='alert alert-warning' role='alert') You can manually sync each customer. If Quickbooks access token is invalid, system will reauthenticate with Quickbooks and this page will reload.
+      div(class='row')
+        div(class='col-lg-12')
+          table(class='table')
+            thead(class='thead-dark')
+              tr
+                th(scope='col') Customer Name
+                th(scope='col') Action
+              each val in pendingCustomers
+                tr
+                  td
+                    a(href='http://localhost:3000/customers/' + val._id target='_blank')= val.name
+                  td
+                    a(href='/sync-customer?id=' + val._id) Sync
+    script
+      include ../src/jquery.js
+      include ../src/popper.js
+      include ../src/bootstrap.js
