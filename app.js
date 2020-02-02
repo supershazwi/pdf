@@ -37,10 +37,7 @@ app.get('/qb-callback', (req, res) => {
     .then(function(authResponse) {
     	// store qb credentials
 
-    	MongoClient.connect('mongodb://localhost:3001/meteor', function (err, client) {
-    		var db = client.db('meteor')
-    		res.render('show-credentials', { access_token: authResponse.getJson().access_token, refresh_token: authResponse.getJson().refresh_token });
-    	});
+    	res.render('show-credentials', { access_token: authResponse.getJson().access_token, refresh_token: authResponse.getJson().refresh_token });
     })
     .catch(function(e) {
         res.send("The error message is :"+e.originalMessage);
