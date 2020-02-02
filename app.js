@@ -33,13 +33,8 @@ app.get('/qb-callback', (req, res) => {
 
 app.get('/', (req, res) =>  {
 	if(oauthClient.isAccessTokenValid()) {
-		let invoiceId = req.query.id;
-		qb.syncinvoice(invoiceId, oauthClient);
 		
-
-		setTimeout(function() {
-			res.redirect("/show-credentials");
-		}, 3000);
+		res.render('show-credentials', { access_token: oauthClient.access_token, refresh_token: oauthClient.refresh_token });
 	} 
 
 	if(!oauthClient.isAccessTokenValid()){
