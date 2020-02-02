@@ -2,7 +2,7 @@ const express = require('express');
 const moment = require('moment');
 const accounting = require('accounting');
 const app = express();
-const port = 5000;
+let port = process.env.PORT;
 var MongoClient = require('mongodb').MongoClient
 
 const OAuthClient = require("intuit-oauth");
@@ -473,4 +473,7 @@ app.get('/outputPDF', function(req, res) {
   res.sendFile(__dirname + "/Invoice_" + req.query.id + ".pdf");
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
