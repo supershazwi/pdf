@@ -6,18 +6,6 @@ let port = process.env.PORT;
 var MongoClient = require('mongodb').MongoClient
 
 const OAuthClient = require("intuit-oauth");
-const pdf = require('pdfjs');
-const fs = require('fs');
-
-const qb = require('./updateqb.js');
-const qbc = require('./updateqbcustomer.js');
-
-// const oauthClient = new OAuthClient({
-// 	clientId: "ABUkNOXEvvdKxllUTOte898zcpY6vViUHrwMK6raf5DuEVTIYJ",
-//     clientSecret: "CHL1zIeePVCqDuzRch3R8fexOdKTL4GctxUJJ83U",
-//     environment: "sandbox",
-//     redirectUri: "http://localhost:5000/qb-callback"
-// });
 
 const oauthClient = new OAuthClient({
 	   clientId: "ABXIhVYAzMZC2qp5ECVfEWpaNZxzFF5tvUGf8Xt89Q3kbcNh3i",
@@ -28,7 +16,6 @@ const oauthClient = new OAuthClient({
 
 app.set('views', './views');
 app.set('view engine', 'pug');
-
 
 app.get('/qb-callback', (req, res) => {
 	let parseRedirect = req.url;
