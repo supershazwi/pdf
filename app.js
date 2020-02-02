@@ -23,7 +23,7 @@ const oauthClient = new OAuthClient({
 	   clientId: "ABXIhVYAzMZC2qp5ECVfEWpaNZxzFF5tvUGf8Xt89Q3kbcNh3i",
     clientSecret: "yfYlL9HfaNGv3EOLCEb5jwuFYvGouZFZSXkvKVdM",
     environment: "production",
-    redirectUri: "https://evening-oasis-90021.herokuapp.com:8000/qb-callback"
+    redirectUri: "https://evening-oasis-90021.herokuapp.com/qb-callback"
 });
 
 app.set('views', './views');
