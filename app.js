@@ -33,7 +33,8 @@ app.get('/qb-callback', (req, res) => {
 
 app.get('/', (req, res) =>  {
 	if(oauthClient.isAccessTokenValid()) {
-		
+		console.log(oauthClient);
+
 		res.render('show-credentials', { access_token: oauthClient.access_token, refresh_token: oauthClient.refresh_token });
 	} 
 
