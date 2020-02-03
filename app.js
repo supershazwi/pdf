@@ -8,8 +8,8 @@ var MongoClient = require('mongodb').MongoClient
 const OAuthClient = require("intuit-oauth");
 
 const oauthClient = new OAuthClient({
-	   clientId: "ABXIhVYAzMZC2qp5ECVfEWpaNZxzFF5tvUGf8Xt89Q3kbcNh3i",
-    clientSecret: "yfYlL9HfaNGv3EOLCEb5jwuFYvGouZFZSXkvKVdM",
+	   clientId: "ABvS6tge05o2bqEhaKGgx9BD7YUVbX1q5z762sXpEfhf8FskR1",
+    clientSecret: "N1oqcbCEoNDIzqoqqlL9Mx2ptvWeY9ofN15QEuOQ",
     environment: "production",
     redirectUri: "https://evening-oasis-90021.herokuapp.com/qb-callback"
 });
@@ -23,7 +23,7 @@ app.get('/qb-callback', (req, res) => {
 	oauthClient.createToken(parseRedirect)
     .then(function(authResponse) {
     	// store qb credentials
-
+    	console.log(oauthClient);
     	res.render('show-credentials', { 
     		access_token: authResponse.getJson().access_token, 
     		refresh_token: authResponse.getJson().refresh_token,  
